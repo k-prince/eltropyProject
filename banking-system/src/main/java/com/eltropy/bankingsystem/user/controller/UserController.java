@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -42,4 +43,11 @@ public class UserController
         return "users_list";
     }
 
+    @GetMapping("/deleteemployee/{id}")
+    public String deleteEmployee(@PathVariable("id") long id, Model model) {
+        User user = repo.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        repo.delete(user);
+        return "redirect:/bankingsystem/user/list_users";
+    }
 }
