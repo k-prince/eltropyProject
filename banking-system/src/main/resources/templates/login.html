@@ -9,7 +9,7 @@
 <div class="container text-center">
     <h1>Welcome to Eltropy Banking system</h1>
     <p th:if="${loginError}" class="error">Wrong user or password</p>
-    <form name="f" th:action="@{/login}" method="post">
+    <form name="f" th:action="@{/bankingsystem}" method="post">
         <h3> Please Sign In</h3>
         <div th:if="${param.error}" class="alert alert-error" >
             Invalid Username and Password!
@@ -17,8 +17,8 @@
         <div th:if="${param.logout}" class="alert alert-success">
             You have been logged out!
         </div>
-        <label for="username">Username</label>:
-        <input type="text" id="username" name="username" autofocus="autofocus" /> <br /> <br />
+        <label for="email">E-mail</label>:
+        <input type="email" id="email" name="email" autofocus="autofocus" /> <br /> <br />
         <label for="password">Password</label>:
         <input type="password" id="password" name="password" /> <br />
         <input type="submit" value="Log in" class="btn"/>
@@ -26,6 +26,7 @@
     </form>
     <div>
         <h4><a th:href="@{/bankingsystem/user/signup}">Register as Admin</a></h4>
+        <h5><a th:href="@{/bankingsystem/user/list_users}">List all Users</a></h5>
 <!--        &nbsp; &nbsp;&nbsp; <h4><a th:href="@{/register}">Register as Employee</a></h4>-->
     </div>
 </div>
